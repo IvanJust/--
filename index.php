@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <?php include "func.php"; include "database.php"; include "form.php";?>
+    <?php include "/include/func.php"; include "/include/database.php"; include "/include/form.php";?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="./images/icon.png">
@@ -20,7 +20,7 @@
     <div class="conteiner" class = "row">
       <div class="col-5" class="fon2">
         <?php include "form.php";
-        echo "$mon1"?>
+        echo "$mon1";?>
       </div>
       
       <div class = "row">

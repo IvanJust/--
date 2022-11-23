@@ -1,6 +1,6 @@
 <?php
     include "index.php";
-    include "form.php";
+    include "/include/form.php";
     #phpinfo();
 
     function getSub($sql_connect){

@@ -18,7 +18,8 @@
     </div>
     
     <div class="conteiner" class = "row">
-      <div class="col-5" class="fon2" style="background-color:cadetblue; margin-left:25px; padding-left:10px;width:115px"><?php include "form.php";
+      <div class="col-5" class="fon2" style="background-color:cadetblue; margin-left:25px; padding-left:10px;width:115px">
+        <?php include "form.php";
         echo $mon1?>
       </div>
       

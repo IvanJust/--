@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
+    <?php include "func.php"; include "database.php"; include "form.php";?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="./images/icon.png">
@@ -13,8 +14,7 @@
   </head>
   <body background="./images/fon.png">
     <div class="container-fluid">
-      <span class="navbar-brand">
-      Календарь экзаменов</span>
+      <span class="navbar-brand">Календарь экзаменов</span>
     </div>
     
     <div class="conteiner" class = "row">
@@ -35,30 +35,39 @@
             <div class="col" style="color: red;">Вс</div>
           </div>
             
-          <?php include "form.php";foreach($class as $key=>$value):?>
+          <?php foreach($class as $key=>$value):?>
           <div class="row row-cols-7">
             <?php 
               foreach($class[$key] as $key2):?>
-              <div class="col"><a style="color:azure" href='/func.php?month="$month"&year="$year"'><?=$key2?></a></div>
+              <div class="col"><a style="color:azure" href='/include/database.php?<?=$key2?>"'><?=$key2?></a></div>
             <?php endforeach;?>
           </div>
           <?php endforeach;?>
         </div>
 
-        <?php include "form.php"; if($month != date('m') || $year != date('Y'))
+        <?php if($key2 != NULL)
           echo "<a style='float: left; margin-left: 10px; font-size: 12px; padding-top: 5px;' 
-          href='?month=".date('m')."&year=".date('Y')."'><< Вернуться к текущей дате</a>";
+          href='/index.php'><< Вернуться к текущей дате</a>";
+        ?>
+        <?php
+        $sql_connect = mysqli_connect("sql301.epizy.com","epiz_33056750","qqXZJh9pi0","epiz_33056750_TZ");
+        if (!isset($sql_connect))
+          echo "Ошибка подключения к MySQL: ", mysqli_connect_errno(), mysqli_connect_error();
+          mysqli_close($sql_connect);
         ?>
 
         <div class="zap">
           <b>Добавление новой записи</b>
           <form method="POST">
-            Дата: <input type="date" name="data">
+            Дата: <input type="range" name="data" min="1" max="$maxdays">
             Время: <input type="time" name="time">
-            Предмет: <input type="text" name="predmet">
+            Предмет: <select name="subject"><?php while($rows =mysqli_fetch_array(getSub($sql_connect))){?>
+              <option value="<?php  echo $rows['id'] ?>"><?php  echo $rows['title'] ?></option><?php }?></select>
             <input type="submit" value="Отправить">    
           </form>
+          <?php postex($sql_connect); postit($sql_connect); postup($sql_connect, postit($sql_connect))?>
         </div>
+        <?php mysqli_close($sql_connect);?>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

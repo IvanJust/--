@@ -25,8 +25,6 @@ $first_of_month = mktime(0, 0, 0, $month, 1, $year);
 $day_headings = array('Sunday', 'Monday', 'Tuesday', 
 'Wednesday', 'Thursday', 'Friday', 'Saturday'); 
 
-
-
 $maxdays = date('t', $first_of_month); 
 $date_info = getdate($first_of_month); 
 $month = $date_info['mon']; 
@@ -54,9 +52,8 @@ if($weekday == -1) $weekday=6;
     // станавливаем текущий день как единица 1
 $day = 1; 
  $class = array(); $class[0] = array();
-for($i = $weekday-1; $i>=0; $i--){
+for($i = $weekday-1; $i>=0; $i--)
     array_push($class[0], " ");
-}
 $sch=0;
 
 for($i = $weekday; $i<$maxdays+$weekday;$i++){
@@ -64,7 +61,6 @@ for($i = $weekday; $i<$maxdays+$weekday;$i++){
     array_push($class[$sch], $day);
     $day++;
 }
-for($i = 0;$i<7-($weekday+$maxdays)%7;$i++){
+for($i = 0;$i<7-($weekday+$maxdays)%7;$i++)
     array_push($class[$sch], " ");
-}
 ?>

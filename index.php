@@ -13,14 +13,14 @@
   </head>
   <body background="./images/fon.png">
     <div class="container-fluid">
-      <span class="navbar-brand" style="background-color:cadetblue; margin-left:25px; padding-left:10px;padding-right:10px;">
+      <span class="navbar-brand">
       Календарь экзаменов</span>
     </div>
     
     <div class="conteiner" class = "row">
-      <div class="col-5" class="fon2" style="background-color:cadetblue; margin-left:25px; padding-left:10px;width:115px">
+      <div class="col-5" class="fon2">
         <?php include "form.php";
-        echo $mon1?>
+        echo "$mon1"?>
       </div>
       
       <div class = "row">
@@ -50,7 +50,7 @@
           href='?month=".date('m')."&year=".date('Y')."'><< Вернуться к текущей дате</a>";
         ?>
 
-        <div class="zap" style="background-color:cadetblue; padding-left:25px; padding-bottom:5px;width:725px">
+        <div class="zap">
           <b>Добавление новой записи</b>
           <form method="POST">
             Дата: <input type="date" name="data">

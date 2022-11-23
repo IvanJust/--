@@ -1,3 +1,6 @@
+.container-fluid{
+    color: aqua;
+}
 .conteiner{
     position: relative;
     /* top: 50%;
@@ -14,13 +17,35 @@
     text-align: center;
     background: #5C8EB3;
 }
+.navbar-brand{
+    background-color:cadetblue; 
+    margin-left:25px; 
+    padding-left:10px;
+    padding-right:10px;
+}
+.col-5{
+    background-color:cadetblue; 
+    margin-left:25px; 
+    padding-left:10px;
+    width:115px
+}
 .col{
     text-align: center;
     border: 1px solid #020730
 }
+.zap{
+    background-color:cadetblue; 
+    padding-left:25px; 
+    padding-bottom:5px;
+    width:725px
+}
+/* form{
+    width: 75%;
+  background: gray;
+  margin: 0 auto;
+} */
 .lin{
-    position: relative;
-    height: 100%;     
+    position: relative;     
 }
 .container2>.row{
     background: #5C8EB3;

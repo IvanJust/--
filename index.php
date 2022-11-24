@@ -59,7 +59,7 @@
         <div class="zap">
           <b>Добавление новой записи</b>
           <form method="POST">
-            Дата: <input type="range" name="data" min="1" max="$maxdays">
+            Дата: <select type="number" name="data" min="1" max="$maxdays" value="1"></select>
             Время: <input type="time" name="time">
             Предмет: <select name="subject"><?php while($rows =mysqli_fetch_array(getSub($sql_connect))){?>
               <option value="<?php  echo $rows['id'] ?>"><?php  echo $rows['title'] ?></option><?php }?></select>

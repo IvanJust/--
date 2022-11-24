@@ -4,7 +4,7 @@
     #phpinfo();
 
     function getSub($sql_connect){
-        $sql1="SELECT * FROM `subjects`";
+        $sql1="SELECT * FROM subjects";
         $result=mysqli_query($sql_connect,$sql1);
         return $result;
     }
@@ -14,7 +14,7 @@
         return $result;
     }
     function postit($sql_connect){
-        $sql3 = "SELECT id FROM subjects WHERE title ='". $_POST['title']."';";
+        $sql3 = "SELECT id FROM subjects WHERE title ='". $_POST['subject']."';";
         $result = $sql_connect->query($sql3);
         return $result;
     }

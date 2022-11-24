@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <?php include "/include/func.php"; include "/include/database.php"; include "/include/form.php";?>
+    <?php include "func.php"; include "database.php"; include "form.php";?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="./images/icon.png">
@@ -19,8 +19,7 @@
     
     <div class="conteiner" class = "row">
       <div class="col-5" class="fon2">
-        <?php include "form.php";
-        echo "$mon1";?>
+        <?php echo include "form.php"; "$mon1";?>
       </div>
       
       <div class = "row">
@@ -39,16 +38,12 @@
           <div class="row row-cols-7">
             <?php 
               foreach($class[$key] as $key2):?>
-              <div class="col"><a style="color:azure" href='/include/database.php?<?=$key2?>"'><?=$key2?></a></div>
+              <div class="col"><a style="color:azure" href='database.php?<?=$key2?>"'><?=$key2?></a></div>
             <?php endforeach;?>
           </div>
           <?php endforeach;?>
         </div>
 
-        <?php if($key2 != NULL)
-          echo "<a style='float: left; margin-left: 10px; font-size: 12px; padding-top: 5px;' 
-          href='/index.php'><< Вернуться к текущей дате</a>";
-        ?>
         <?php
         $sql_connect = mysqli_connect("sql301.epizy.com","epiz_33056750","qqXZJh9pi0","epiz_33056750_TZ");
         if (!isset($sql_connect))
@@ -59,10 +54,11 @@
         <div class="zap">
           <b>Добавление новой записи</b>
           <form method="POST">
-            Дата: <select type="number" name="data" min="1" max="$maxdays" value="1"></select>
+            День: <select type="number" name="data"><? for($i=1; $i<$maxdays+1;$i++){?>
+              <option value="<?echo '$i';?>"><?echo '$i';?></option>}<?}?></select>
             Время: <input type="time" name="time">
             Предмет: <select name="subject"><?php while($rows =mysqli_fetch_array(getSub($sql_connect))){?>
-              <option value="<?php  echo $rows['id'] ?>"><?php  echo $rows['title'] ?></option><?php }?></select>
+              <option value="<?php  echo $rows['subject'] ?>"><?php  echo $rows['subject'] ?></option><?php }?></select>
             <input type="submit" value="Отправить">    
           </form>
           <?php postex($sql_connect); postit($sql_connect); postup($sql_connect, postit($sql_connect))?>

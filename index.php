@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <?php include 'include/func.php'; include 'include/database.php'; include 'include/form.php';?>
+    <?php require_once('include/func.php'); require_once('include/database.php'); require_once('include/form.php');?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="./images/icon.png">

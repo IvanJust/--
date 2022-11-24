@@ -61,6 +61,8 @@ for($i = $weekday; $i<$maxdays+$weekday;$i++){
     array_push($class[$sch], $day);
     $day++;
 }
+if(($weekday+$maxdays)%7!=0){
 for($i = 0;$i<7-($weekday+$maxdays)%7;$i++)
     array_push($class[$sch], " ");
+}
 ?>

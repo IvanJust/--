@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <?php include "func.php"; include "database.php"; include "form.php";?>
+    <?php include 'include\func.php'; include 'include\database.php'; include 'include\form.php';?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="./images/icon.png">
@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./style/st.css">
     
     <title>Календарь</title><!-- href = '$self?month=".$next_month."&year=".$next_year."' -->
-    <!-- <script src="./form.php"></script> -->
     <!-- require_once -->
   </head>
   <body background="./images/fon.png">
@@ -19,7 +18,7 @@
     
     <div class="conteiner" class = "row">
       <div class="col-5" class="fon2">
-        <?php echo include "form.php"; "$mon1";?>
+        <?php echo "$mon1";?>
       </div>
       
       <div class = "row">
@@ -38,7 +37,7 @@
           <div class="row row-cols-7">
             <?php 
               foreach($class[$key] as $key2):?>
-              <div class="col"><a style="color:azure" href='database.php?<?=$key2?>"'><?=$key2?></a></div>
+              <div class="col"><a style="color:azure" href='index2.php?day=<?=$key2?>"'><?=$key2?></a></div>
             <?php endforeach;?>
           </div>
           <?php endforeach;?>
@@ -46,6 +45,7 @@
 
         <?php
         $sql_connect = mysqli_connect("sql301.epizy.com","epiz_33056750","qqXZJh9pi0","epiz_33056750_TZ");
+        // $sql_connect = mysqli_connect("localhost", "root", "", "");
         if (!isset($sql_connect))
           echo "Ошибка подключения к MySQL: ", mysqli_connect_errno(), mysqli_connect_error();
           mysqli_close($sql_connect);
@@ -55,7 +55,7 @@
           <b>Добавление новой записи</b>
           <form method="POST">
             День: <select type="number" name="data"><? for($i=1; $i<$maxdays+1;$i++){?>
-              <option value="<?echo '$i';?>"><?echo '$i';?></option>}<?}?></select>
+              <option value="<?echo $i;?>"><?echo $i;?></option><?}?></select>
             Время: <input type="time" name="time">
             Предмет: <select name="subject"><?php while($rows =mysqli_fetch_array(getSub($sql_connect))){?>
               <option value="<?php  echo $rows['subject'] ?>"><?php  echo $rows['subject'] ?></option><?php }?></select>

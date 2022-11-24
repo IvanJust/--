@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <?php include 'include\func.php'; include 'include\database.php'; include 'include\form.php';?>
+    <?php include 'include/func.php'; include 'include/database.php'; include 'include/form.php';?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="./images/icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="./style/st.css">
-    
-    <title>Календарь</title><!-- href = '$self?month=".$next_month."&year=".$next_year."' -->
-    <!-- require_once -->
+    <title>Календарь</title>
   </head>
   <body background="./images/fon.png">
     <div class="container-fluid">
@@ -37,15 +35,15 @@
           <div class="row row-cols-7">
             <?php 
               foreach($class[$key] as $key2):?>
-              <div class="col"><a style="color:azure" href='index2.php?day=<?=$key2?>"'><?=$key2?></a></div>
+              <div class="col"><a style="color:azure" href='index2.php?day=<?=$key2?>'><?=$key2?></a></div>
             <?php endforeach;?>
           </div>
           <?php endforeach;?>
         </div>
 
         <?php
-        $sql_connect = mysqli_connect("sql301.epizy.com","epiz_33056750","qqXZJh9pi0","epiz_33056750_TZ");
-        // $sql_connect = mysqli_connect("localhost", "root", "", "");
+        // $sql_connect = mysqli_connect("sql301.epizy.com","epiz_33056750","qqXZJh9pi0","epiz_33056750_TZ");
+        $sql_connect = mysqli_connect("localhost", "root", "pop1936Hv534", "epiz_33056750_TZ");
         if (!isset($sql_connect))
           echo "Ошибка подключения к MySQL: ", mysqli_connect_errno(), mysqli_connect_error();
           mysqli_close($sql_connect);

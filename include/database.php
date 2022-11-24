@@ -37,7 +37,7 @@ function viv($sql_connect){
 
 
 function back(){
-    if(isset($_GET['$key2'])) echo "<a style='float: left; margin-left: 10px; font-size: 12px; padding-top: 5px;' 
+    if(isset($_GET['day='])) echo "<a style='float: left; margin-left: 10px; font-size: 12px; padding-top: 5px;' 
         href='/index.php'><< Вернуться к текущей дате</a>";    
 }
 ?>

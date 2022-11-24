@@ -20,7 +20,8 @@ function viv($sql_connect){
             <table>
                 <tr>";
         while($exam=$result->fetch_assoc()){
-            $exams .= "<td class=" . "day " . "> " . $exam["data"] . "</td>
+            $exams .= "
+            <td class=" . "day " . "> " . $exam["data"] . "</td>
             <td class=" . "day " . "> " . $exam["title"] . "</td>
             <td class=" . "day " . "> " . $exam["code"] . "</td>
             <td class=" . "day " . "> " . $exam["specialities"] . "</td>

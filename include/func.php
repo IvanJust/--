@@ -2,7 +2,7 @@
     #phpinfo();
 
     function getSub($sql_connect){
-        $sql1="SELECT * FROM subjects";
+        $sql1="SELECT title FROM `subjects`";
         $result=mysqli_query($sql_connect,$sql1);
         return $result;
     }

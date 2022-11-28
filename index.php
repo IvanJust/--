@@ -56,7 +56,7 @@
             День: <select type="number" name="data"><? for($i=1; $i<$maxdays+1;$i++){?>
               <option value="<?echo $i;?>"><?echo $i;?></option><?}?></select>
             Время: <input type="time" name="time">
-            Предмет: <select name="subject"><?php while($rows =mysqli_fetch_array(getSub($sql_connect))){?>
+            Предмет: <select name="subject"><?php $result1 =getSub($sql_connect); while($rows =mysqli_fetch_array($result1)){?>
               <option value="<?php  echo $rows['subject'] ?>"><?php  echo $rows['subject'] ?></option><?php }?></select>
             <input type="submit" value="Отправить">    
           </form>

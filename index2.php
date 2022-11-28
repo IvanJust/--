@@ -4,9 +4,10 @@
     <?php include 'include/database.php';
     $sql_connect = mysqli_connect("sql308.epizy.com","epiz_33073180","mVGu7zFZqBG65l","epiz_33073180_exams");
     # $sql_connect = mysqli_connect("localhost", "root", "pop1936Hv534", "epiz_33056750_TZ");
-    if (!isset($sql_connect))
-    echo "Ошибка подключения к MySQL: ", mysqli_connect_errno(), mysqli_connect_error();
-    mysqli_close($sql_connect);
+    if (!isset($sql_connect)){
+    echo "Ошибка подключения к MySQL: ". mysqli_connect_errno(). mysqli_connect_error();
+    //mysqli_close($sql_connect);
+  }
   ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

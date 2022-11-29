@@ -6,7 +6,7 @@
     # $sql_connect = mysqli_connect("localhost", "root", "pop1936Hv534", "epiz_33056750_TZ");
     if (!isset($sql_connect)){
     echo "Ошибка подключения к MySQL: ". mysqli_connect_errno(). mysqli_connect_error();
-    //mysqli_close($sql_connect);
+    #mysqli_close($sql_connect);
   }
   ?>
     <meta charset="utf-8">

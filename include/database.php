@@ -1,11 +1,11 @@
 <?php
 function viv($sql_connect){
-    $sql = "SELECT subjects.title as `title`, schedule.date as `data`, specialities.code as `code`, specialities.title as `specialities`
-        FROM schedule
-        INNER JOIN subjects ON subjects.id = schedule.id_subject  
-        INNER JOIN subject_to_specialities ON  subject_to_specialities.id_subject = subjects.id
-        INNER JOIN specialities ON specialities.id = subject_to_specialities.id_speciality 
-        WHERE DAYOFMONTH(date) = " . $_GET['day='] . ";";
+    $sql = "SELECT subjects.title, schedule.date, specialities.code, specialities.title as `specialities1`
+    FROM schedule
+    INNER JOIN subjects ON subjects.id = schedule.id_subjects  
+    INNER JOIN subjects_to_specialities ON  subjects_to_specialities.id_subjects = subjects.id
+    INNER JOIN specialities ON specialities.id = subjects_to_specialities.id_specialities 
+    WHERE DAYOFMONTH(date) = " . $_GET['day'] . ";";
         var_dump($sql);
     $result = $sql_connect->query($sql);
     var_dump($result);
@@ -14,7 +14,7 @@ function viv($sql_connect){
             "<div class="."title-exams".">Экзамены</div>
             <table>
                 <tr>
-                    <th><b>Время экзамена</b></th>
+                    <th><b>Дата и время экзамена</b></th>
                     <th><b>Предмет</b></th>
                     <th><b>Код специальности</b></th>
                     <th><b>Название специальности</b></th>
@@ -23,10 +23,10 @@ function viv($sql_connect){
                 <tr>";
         while($exam=$result->fetch_assoc()){
             $exams .= "
-            <td class=" . "day " . "> " . $exam["data"] . "</td>
-            <td class=" . "day " . "> " . $exam["title"] . "</td>
-            <td class=" . "day " . "> " . $exam["code"] . "</td>
-            <td class=" . "day " . "> " . $exam["specialities"] . "</td>
+            <td class=" . "day " . "> " . $exam[`data`] . "</td>
+            <td class=" . "day " . "> " . $exam[`title`] . "</td>
+            <td class=" . "day " . "> " . $exam[`code`] . "</td>
+            <td class=" . "day " . "> " . $exam[`specialities1`] . "</td>
             </tr>";
         }
         $exams .= "</table>
@@ -38,8 +38,6 @@ function viv($sql_connect){
         echo "Нет экзаменов в этот день!";
     }
 }
-
-
 function back(){
     if(isset($_GET['day='])) echo "<a style='float: left; margin-left: 10px; font-size: 12px; padding-top: 5px;' 
         href='/index.php'><< Вернуться к текущей дате</a>";    

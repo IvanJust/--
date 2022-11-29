@@ -58,9 +58,15 @@
             Время: <input type="time" name="time">
             Предмет: <select name="subject"><?php $result1 =getSub($sql_connect); while($rows =mysqli_fetch_array($result1)){?>
               <option value="<?php  echo $rows['subject'] ?>"><?php  echo $rows['subject'] ?></option><?php }?></select>
-            <input type="submit" value="Отправить">    
+              <div><button type="submit" class="btn btn-primary" name="submitgo">Отправить</button></div>
           </form>
-          <?php postex($sql_connect); postit($sql_connect); postup($sql_connect, postit($sql_connect))?>
+          <?php if(isset($_POST['submitgo'])){
+          postex($sql_connect); $posti = postit($sql_connect);
+          while ($row2 = $posti->fetch_assoc()) {
+            $sql4 = "UPDATE schedule SET id_subjects = '". $row2['id'] ."' WHERE date ='".date('Y')."-".date('m')."-".$_POST['data']." ". $_POST['time'].":00';";
+            mysqli_query($sql_connect, $sql4);
+          }
+          }?>
         </div>
         <?php mysqli_close($sql_connect);?>
       </div>

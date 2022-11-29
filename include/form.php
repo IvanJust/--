@@ -1,25 +1,6 @@
 <?php 
-    // проверяем, если в переменная month была установлена в URL-адресе, 
-    //либо используем PHP функцию date(), чтобы установить текущий месяц.
-if(isset($_GET['month=']))
-    $month = $_GET['month=']; 
-elseif(isset($_GET['viewmonth']))
-    $month = $_GET['viewmonth']; 
-else $month = date('m'); 
- 
-    // Теперь мы проверим, если переменная года устанавливается в URL, 
-    //либо использовать PHP функцию date(), 
-    //чтобы установить текущий год, если текущий год не установлен в URL-адресе.
-if(isset($_GET['year=']))
-    $year = $_GET['year=']; 
-elseif(isset($_GET['viewyear'])) 
-    $year = $_GET['viewyear']; 
-else $year = date('Y'); 
-
-    //проверка месяца
-if($month == '12')
-$next_year = $year + 1; 
-else $next_year = $year;
+$month = date('m'); 
+$year = date('Y'); 
 $first_of_month = mktime(0, 0, 0, $month, 1, $year); 
     // Массив имен всех дней в неделю
 $day_headings = array('Sunday', 'Monday', 'Tuesday', 
